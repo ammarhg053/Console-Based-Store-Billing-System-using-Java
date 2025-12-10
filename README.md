@@ -1,291 +1,253 @@
 # Console-Based-Store-Billing-System-using-Java
 A console-based Store Billing System developed in Java as a Semester 1 individual project. The system includes login authentication, product management, billing with GST, multiple payment modes, stock control, and sales summary using core Java concepts.
 
-Store Billing System (Java – Semester 1 Individual Project)
-1. Project Overview
+Here’s a ready-made **README.txt** you can put directly in your GitHub repo (you can also save it as `README.md` if you want nice formatting on GitHub):
 
-This is a console-based Store Billing System developed in Java as an individual project in Semester 1.
+---
 
-The project simulates a basic Point of Sale (POS) system for a store, allowing the operator to:
+# Store Billing System (Java – Semester 1 Individual Project)
 
-Log in with credentials
+## 1. Project Overview
 
-View products and categories
+This is a **console-based Store Billing System** developed in **Java** as an individual project in **Semester 1**.
 
-Add items to a cart
+The project simulates a basic **Point of Sale (POS)** system for a store, allowing the operator to:
 
-Generate bills with GST
+* Log in with credentials
+* View products and categories
+* Add items to a cart
+* Generate bills with GST
+* Accept different payment methods (Cash / UPI)
+* Track low stock and restock items
+* View a sales summary for the current session
 
-Accept different payment methods (Cash / UPI)
+The goal of this project is to apply core Java concepts such as **classes, objects, arrays, loops, conditional statements, and user input handling** in a real-world scenario.
 
-Track low stock and restock items
+---
 
-View a sales summary for the current session
+## 2. Features
 
-The goal of this project is to apply core Java concepts such as classes, objects, arrays, loops, conditional statements, and user input handling in a real-world scenario.
+### 🔐 Login System
 
-2. Features
-🔐 Login System
+* Username & password based login (default: `admin123` / `admin123`)
+* Maximum **3 attempts**
+* If all attempts fail, the system exits with a message.
 
-Username & password based login (default: admin123 / admin123)
+### 🏬 Product Management
 
-Maximum 3 attempts
+* Predefined list of **25 products** across categories:
 
-If all attempts fail, the system exits with a message.
+  * Electronics
+  * Furniture
+  * Groceries
+  * Personal Care
+  * Clothing
+* Each product has:
 
-🏬 Product Management
+  * Category
+  * Product Name
+  * Price
+  * Stock quantity
 
-Predefined list of 25 products across categories:
+### 🛒 Main Menu Options
 
-Electronics
+1. **View All Products**
 
-Furniture
+   * Displays all products in a formatted table: `Category | Product Name | Price | Stock`.
 
-Groceries
+2. **View Products by Category**
 
-Personal Care
+   * User enters a category name.
+   * Shows only products from that category.
+   * If category does not exist, an error message is shown.
 
-Clothing
+3. **Add to Cart**
 
-Each product has:
+   * User enters product name and quantity.
+   * Checks:
 
-Category
+     * If product exists
+     * If enough stock is available
+   * Updates the stock after adding to the cart.
+   * Continues to add more products until user chooses to stop.
 
-Product Name
+4. **Checkout**
 
-Price
+   * If no products are added, warns the user.
+   * Calculates:
 
-Stock quantity
+     * Subtotal
+     * GST @ 18%
+     * Final amount = Subtotal + GST
+   * Payment Methods:
 
-🛒 Main Menu Options
+     * **Online (UPI)** – validates basic UPI format (`something@something`)
+     * **Cash**
+   * Tracks:
 
-View All Products
+     * Total cash collected
+     * Total online amount collected
+   * Prints a simple bill:
 
-Displays all products in a formatted table: Category | Product Name | Price | Stock.
+     * Store name
+     * Bill number
+     * Total amount, GST, final amount
+     * POS operator name
 
-View Products by Category
+5. **View Low Stock Items**
 
-User enters a category name.
+   * Shows all items with stock **less than 5**.
+   * If none are low stock, shows a message.
 
-Shows only products from that category.
+6. **Restock Product**
 
-If category does not exist, an error message is shown.
+   * Allows operator to increase stock of a specific product.
+   * Checks if product exists, then adds quantity to stock.
+   * Can restock multiple products in one go.
 
-Add to Cart
+7. **View Sales Summary**
 
-User enters product name and quantity.
+   * Displays:
 
-Checks:
+     * Total Cash collected
+     * Total Online collected
+     * Total amount (Cash + Online)
+     * POS Operator name
 
-If product exists
+8. **Exit**
 
-If enough stock is available
+   * Exits the system with a goodbye message.
 
-Updates the stock after adding to the cart.
+---
 
-Continues to add more products until user chooses to stop.
+## 3. Java Concepts Used
 
-Checkout
+The program demonstrates the following **Java concepts**:
 
-If no products are added, warns the user.
+1. **Classes and Objects**
 
-Calculates:
+   * `StoreItem` class for individual products
+   * `StoreManagement` class containing the `main` method
 
-Subtotal
+2. **Encapsulation**
 
-GST @ 18%
+   * Product data (name, category, price, stock) grouped in `StoreItem`.
 
-Final amount = Subtotal + GST
+3. **Arrays**
 
-Payment Methods:
+   * `StoreItem[] items = new StoreItem[25];` to store multiple products.
 
-Online (UPI) – validates basic UPI format (something@something)
+4. **Loops**
 
-Cash
+   * `for` loops for initializing and iterating products
+   * `while` loops for login attempts, menus, adding to cart, restocking.
 
-Tracks:
+5. **Conditional Statements**
 
-Total cash collected
+   * `if-else`, `switch-case` for menu options and validations.
 
-Total online amount collected
+6. **`this` Keyword**
 
-Prints a simple bill:
+   * Used inside `setData` to refer to object fields.
 
-Store name
+7. **User Input Handling**
 
-Bill number
+   * `Scanner` class for reading input from the console.
 
-Total amount, GST, final amount
+8. **String Manipulation**
 
-POS operator name
+   * `equalsIgnoreCase()` for case-insensitive comparison.
+   * `toUpperCase()` for formatted output.
+   * Basic regex with `matches()` for UPI validation.
 
-View Low Stock Items
+9. **Formatted Output (`printf`)**
 
-Shows all items with stock less than 5.
+   * Used to display products in aligned tabular format.
 
-If none are low stock, shows a message.
+10. **ANSI Escape Codes (Console Colors)**
 
-Restock Product
+    * Green text for success messages.
+    * Red text for errors and warnings.
 
-Allows operator to increase stock of a specific product.
+---
 
-Checks if product exists, then adds quantity to stock.
+## 4. Code Structure
 
-Can restock multiple products in one go.
+### `StoreItem` Class
 
-View Sales Summary
+* **Fields**:
 
-Displays:
+  * `String productName;`
+  * `String category;`
+  * `double price;`
+  * `int stock;`
+* **Methods**:
 
-Total Cash collected
+  * `void setData(String productName, String category, double price, int stock)`
 
-Total Online collected
+    * Sets product details.
+  * `void display()`
 
-Total amount (Cash + Online)
+    * Prints product details in a formatted row.
 
-POS Operator name
+### `StoreManagement` Class
 
-Exit
+* Contains:
 
-Exits the system with a goodbye message.
+  * `static { ... }` block
 
-3. Java Concepts Used
+    * Prints Java concepts used before `main()` runs.
+  * `public static void main(String[] args)`
 
-The program demonstrates the following Java concepts:
+    * Handles:
 
-Classes and Objects
+      * Login system
+      * Product initialization
+      * Menu-driven operations
+      * Cart, billing, payment, stock, and summary logic
 
-StoreItem class for individual products
+---
 
-StoreManagement class containing the main method
+## 5. How to Run the Project
 
-Encapsulation
+### Requirements
 
-Product data (name, category, price, stock) grouped in StoreItem.
+* Java JDK **8 or above**
+* Any IDE (IntelliJ, Eclipse, VS Code) or command line
 
-Arrays
+### Using Command Line
 
-StoreItem[] items = new StoreItem[25]; to store multiple products.
+1. Save the file as `StoreManagement.java` (both classes are in the same file).
+2. Open terminal / command prompt in the file directory.
+3. Compile:
 
-Loops
+   ```bash
+   javac StoreManagement.java
+   ```
+4. Run:
 
-for loops for initializing and iterating products
+   ```bash
+   java StoreManagement
+   ```
 
-while loops for login attempts, menus, adding to cart, restocking.
+---
 
-Conditional Statements
+## 6. Possible Improvements (Future Scope)
 
-if-else, switch-case for menu options and validations.
+* Add **file handling** to save sales history.
+* Add **customer details** and billing history.
+* Add **discounts, coupons, and offers**.
+* Implement **object-oriented improvements** like getters/setters and constructors.
+* Create a **GUI-based version** using Java Swing / JavaFX.
+* Add **database (MySQL / PostgreSQL)** for persistent storage.
 
-this Keyword
+---
 
-Used inside setData to refer to object fields.
+## 7. Author
 
-User Input Handling
+* **Name:** Ammar Husain Gheewala
+* **Semester:** 1
+* **Project Type:** Individual – Java Store Billing System
 
-Scanner class for reading input from the console.
 
-String Manipulation
 
-equalsIgnoreCase() for case-insensitive comparison.
-
-toUpperCase() for formatted output.
-
-Basic regex with matches() for UPI validation.
-
-Formatted Output (printf)
-
-Used to display products in aligned tabular format.
-
-ANSI Escape Codes (Console Colors)
-
-Green text for success messages.
-
-Red text for errors and warnings.
-
-4. Code Structure
-StoreItem Class
-
-Fields:
-
-String productName;
-
-String category;
-
-double price;
-
-int stock;
-
-Methods:
-
-void setData(String productName, String category, double price, int stock)
-
-Sets product details.
-
-void display()
-
-Prints product details in a formatted row.
-
-StoreManagement Class
-
-Contains:
-
-static { ... } block
-
-Prints Java concepts used before main() runs.
-
-public static void main(String[] args)
-
-Handles:
-
-Login system
-
-Product initialization
-
-Menu-driven operations
-
-Cart, billing, payment, stock, and summary logic
-
-5. How to Run the Project
-Requirements
-
-Java JDK 8 or above
-
-Any IDE (IntelliJ, Eclipse, VS Code) or command line
-
-Using Command Line
-
-Save the file as StoreManagement.java (both classes are in the same file).
-
-Open terminal / command prompt in the file directory.
-
-Compile:
-
-javac StoreManagement.java
-
-
-Run:
-
-java StoreManagement
-
-6. Possible Improvements (Future Scope)
-
-Add file handling to save sales history.
-
-Add customer details and billing history.
-
-Add discounts, coupons, and offers.
-
-Implement object-oriented improvements like getters/setters and constructors.
-
-Create a GUI-based version using Java Swing / JavaFX.
-
-Add database (MySQL / PostgreSQL) for persistent storage.
-
-7. Author
-
-Name: Ammar Husain Gheewala
-
-Semester: 1
-
-Project Type: Individual – Java Store Billing System
